@@ -42,13 +42,26 @@ export const TaskList = () => {
 
 	return (
 		<Paper elevation={3} sx={{ p: 2 }}>
-			<Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: { xs: 'column', sm: 'row' }, // Stack vertically on mobile
+					justifyContent: 'space-between',
+					gap: { xs: 2, sm: 0 }, // Add gap when stacked
+					mb: 2,
+				}}
+			>
 				<ToggleButtonGroup
 					value={filter}
 					exclusive
 					onChange={handleFilterChange}
 					aria-label="task filter"
 					size="small"
+					fullWidth // Make full width on mobile
+					sx={{
+						mb: { xs: 1, sm: 0 }, // Add bottom margin when stacked
+						width: { xs: '100%', sm: 'auto' }, // Full width on mobile
+					}}
 				>
 					<ToggleButton value="all" aria-label="all tasks">
 						All
@@ -67,6 +80,10 @@ export const TaskList = () => {
 					onChange={handleSortChange}
 					aria-label="task sort"
 					size="small"
+					fullWidth // Make full width on mobile
+					sx={{
+						width: { xs: '100%', sm: 'auto' }, // Full width on mobile
+					}}
 				>
 					<ToggleButton value="newest" aria-label="newest first">
 						Newest
@@ -76,7 +93,6 @@ export const TaskList = () => {
 					</ToggleButton>
 				</ToggleButtonGroup>
 			</Box>
-
 			{sortedTasks.length === 0 ? (
 				<Typography variant="body1" align="center" sx={{ p: 2 }}>
 					No tasks found. Add a new task to get started!
