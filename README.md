@@ -32,7 +32,7 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/todo-app.git
+git clone https://github.com/ZaryabDogar/ToDo-App-with-MUI
 ```
 
 2. Install dependencies:
